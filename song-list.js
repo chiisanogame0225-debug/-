@@ -14,6 +14,32 @@ const songs = [
 ];
 
 const list = document.getElementById("songList");
+// 追加ボタンを押したときにフォームを表示
+document.getElementById('addSongButton').addEventListener('click', function() {
+  var form = document.getElementById('addSongForm');
+  form.style.display = 'block';
+});
+
+// フォーム送信時に曲を追加
+document.getElementById('songForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const newSong = {
+    title: this.title.value,
+    artist: this.artist.value,
+    furigana: this.furigana.value,
+    url: this.url.value
+  };
+
+  songs.push(newSong);
+  render();
+  
+  // フォームをリセットして非表示にする
+  this.reset();
+  document.getElementById('addSongForm').style.display = 'none';
+});
+
+
 const sortBy = document.getElementById("sortBy");
 
 function render() {
