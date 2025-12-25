@@ -6,40 +6,55 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>歌える曲リスト</h1>
 
-<div class="filter">
-  <select id="sortBy">
-    <option value="artist">アーティスト名で並び替え</option>
-    <option value="title">曲名で並び替え</option>
-  </select>
-  <button id="addSongButton">曲を追加</button>
-  
-  <!-- フォームをここに追加 -->
-  <div class="overlay" id="overlay"></div>
-  <div id="addSongForm" style="display: none;">
-    <h2>曲を追加</h2>
-    <form id="songForm">
-      <label>曲名: <input type="text" name="title" required></label><br>
-      <label>アーティスト名: <input type="text" name="artist" required></label><br>
-      <label>振り仮名: <input type="text" name="furigana" required></label><br>
-      <label>URL: <input type="text" name="url" required></label><br>
-      <button type="submit">追加</button>
-    </form>
-  </div>
+<h1>歌える曲リスト</h1>
+
+<button id="addSongButton">曲を追加</button>
+<button id="sortAiueoButton">あいうえお順に並び替え</button>
+
+<!-- オーバーレイ -->
+<div class="overlay" id="overlay"></div>
+
+<!-- ポップアップ -->
+<div id="addSongForm">
+  <h2>曲を追加</h2>
+  <form id="songForm">
+    <label>
+      曲名：
+      <input type="text" name="title" required>
+    </label><br><br>
+
+    <label>
+      アーティスト名：
+      <input type="text" name="artist" required>
+    </label><br><br>
+
+    <label>
+      アーティスト振り仮名：
+      <input type="text" name="furigana" required>
+    </label><br><br>
+
+    <label>
+      URL：
+      <input type="url" name="url">
+    </label><br><br>
+
+    <button type="submit">追加</button>
+    <button type="button" id="closeButton">キャンセル</button>
+  </form>
 </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>振り仮名</th>
-        <th>アーティスト名</th>
-        <th>曲名</th>
-        <th>URL</th>
-      </tr>
-    </thead>
-    <tbody id="songList"></tbody>
-  </table>
+<table>
+  <thead>
+    <tr>
+      <th>アーティスト名</th>
+      <th>曲名</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody id="songList"></tbody>
+</table>
 
-  <script src="song-list.js"></script>
+<script src="script.js"></script>
 </body>
+</html>
