@@ -58,7 +58,6 @@ function render() {
     tr.innerHTML = `
       <td>${song.artist}</td>
       <td><a href="${song.url}" target="_blank">${song.title}</a></td>
-      <td><a href="${song.url}" target="_blank">リンク</a></td>
     `;
 
     if (index % 2 === 0) {
