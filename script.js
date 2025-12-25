@@ -56,20 +56,23 @@ function render() {
   list1.innerHTML = "";
   list2.innerHTML = "";
 
-  lastArtist = ''; // レンダリングのたびにリセット
-  currentList = 1; // 初期テーブルは list1
+  lastArtist = '';
+  currentList = 1;
 
-  songs.forEach((song, index) => {
+  songs.forEach((song) => {
     const tr = document.createElement("tr");
+
+    // アーティスト名が変わった場合に表示する
     const artistName = (song.artist === lastArtist) ? '' : song.artist;
+    lastArtist = song.artist;
 
     tr.innerHTML = `
       <td>${artistName}</td>
       <td><a href="${song.url}" target="_blank">${song.title}</a></td>
     `;
 
-    // アーティスト名が同じ場合は同じテーブルに追加
-    if (song.artist === lastArtist || lastArtist === '') {
+    // テーブルの切り替え条件
+    if (song.artist === lastArtist || lastArtist === song.artist) {
       if (currentList === 1) {
         list1.appendChild(tr);
       } else {
@@ -77,7 +80,6 @@ function render() {
       }
     } else {
       // アーティスト名が異なる場合はテーブルを切り替える
-      lastArtist = song.artist;
       currentList = (currentList === 1) ? 2 : 1;
       if (currentList === 1) {
         list1.appendChild(tr);
