@@ -7,6 +7,8 @@ const overlay = document.getElementById("overlay");
 const songForm = document.getElementById("songForm");
 const closeButton = document.getElementById("closeButton");
 
+let lastArtist = ''; // 最後に追加したアーティスト名
+
 // ポップアップを開く
 addSongButton.addEventListener("click", () => {
   addSongForm.style.display = "block";
@@ -53,6 +55,8 @@ function render() {
   list1.innerHTML = "";
   list2.innerHTML = "";
 
+  lastArtist = ''; // レンダリングのたびにリセット
+
   songs.forEach((song, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -60,10 +64,21 @@ function render() {
       <td><a href="${song.url}" target="_blank">${song.title}</a></td>
     `;
 
-    if (index % 2 === 0) {
-      list1.appendChild(tr);
+    // 同じアーティスト名の場合は同じテーブルに追加
+    if (song.artist === lastArtist) {
+      if (index % 2 === 0) {
+        list1.appendChild(tr);
+      } else {
+        list2.appendChild(tr);
+      }
     } else {
-      list2.appendChild(tr);
+      // 新しいアーティスト名の場合はテーブルをリセット
+      lastArtist = song.artist;
+      if (index % 2 === 0) {
+        list1.appendChild(tr);
+      } else {
+        list2.appendChild(tr);
+      }
     }
   });
 }
