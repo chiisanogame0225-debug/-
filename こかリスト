@@ -1,0 +1,26 @@
+body {
+  font-family: system-ui, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.filter {
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+th {
+  background-color: #f5f5f5;
+}
