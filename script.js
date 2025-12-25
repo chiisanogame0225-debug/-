@@ -56,23 +56,28 @@ function render() {
   list1.innerHTML = "";
   list2.innerHTML = "";
 
-  lastArtist = ''; // レンダリングのたびにリセット
-  currentList = 1; // 初期テーブルは list1
+  lastArtist = '';
+  currentList = 1;
 
   songs.forEach((song) => {
     const tr = document.createElement("tr");
 
-    // アーティスト名の表示制御
-    const artistName = (song.artist === lastArtist) ? '' : song.artist;
-    lastArtist = song.artist;
+    // アーティスト名が変わった場合のみアーティスト名を表示
+    if (song.artist !== lastArtist) {
+      lastArtist = song.artist;
+      // アーティスト名のセルを追加
+      const artistCell = document.createElement("td");
+      artistCell.textContent = song.artist;
+      tr.appendChild(artistCell);
+    }
 
-    tr.innerHTML = `
-      <td>${artistName}</td>
-      <td><a href="${song.url}" target="_blank">${song.title}</a></td>
-    `;
+    // 曲名のセルを追加
+    const titleCell = document.createElement("td");
+    titleCell.innerHTML = `<a href="${song.url}" target="_blank">${song.title}</a>`;
+    tr.appendChild(titleCell);
 
     // テーブルの切り替え条件
-    if (song.artist === lastArtist || lastArtist === song.artist) {
+    if (lastArtist === song.artist) {
       if (currentList === 1) {
         list1.appendChild(tr);
       } else {
