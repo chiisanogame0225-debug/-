@@ -8,13 +8,13 @@ const overlay = document.getElementById("overlay");
 const songForm = document.getElementById("songForm");
 const closeButton = document.getElementById("closeButton");
 
-/* ポップアップ表示 */
+// ポップアップ表示
 addSongButton.addEventListener("click", () => {
   addSongForm.style.display = "block";
   overlay.style.display = "block";
 });
 
-/* ポップアップ閉じる */
+// ポップアップ閉じる
 function closePopup() {
   addSongForm.style.display = "none";
   overlay.style.display = "none";
@@ -23,7 +23,7 @@ function closePopup() {
 closeButton.addEventListener("click", closePopup);
 overlay.addEventListener("click", closePopup);
 
-/* 曲追加 */
+// 曲追加
 songForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -41,13 +41,13 @@ songForm.addEventListener("submit", (e) => {
   closePopup();
 });
 
-/* あいうえお順ソート（振り仮名使用・非表示） */
+// あいうえお順ソート（振り仮名使用）
 sortAiueoButton.addEventListener("click", () => {
   songs.sort((a, b) => a.furigana.localeCompare(b.furigana, "ja"));
   render();
 });
 
-/* 描画 */
+// 曲リストを表示する関数
 function render() {
   songList.innerHTML = "";
 
@@ -55,8 +55,8 @@ function render() {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${song.artist}</td>
-      <td>${song.title}</td>
-      <td>${song.url ? `<a href="${song.url}" target="_blank">リンク</a>` : ""}</td>
+      <td><a href="${song.url}" target="_blank">${song.title}</a></td>
+      <td><a href="${song.url}" target="_blank">リンク</a></td>
     `;
     songList.appendChild(tr);
   });
