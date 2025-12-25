@@ -59,15 +59,17 @@ function render() {
   lastArtist = ''; // レンダリングのたびにリセット
   currentList = 1; // 初期テーブルは list1
 
-  songs.forEach((song) => {
+  songs.forEach((song, index) => {
     const tr = document.createElement("tr");
+    const artistName = (song.artist === lastArtist) ? '' : song.artist;
+
     tr.innerHTML = `
-      <td>${song.artist}</td>
+      <td>${artistName}</td>
       <td><a href="${song.url}" target="_blank">${song.title}</a></td>
     `;
 
-    if (song.artist === lastArtist) {
-      // 同じアーティスト名の場合は同じテーブルに追加
+    // アーティスト名が同じ場合は同じテーブルに追加
+    if (song.artist === lastArtist || lastArtist === '') {
       if (currentList === 1) {
         list1.appendChild(tr);
       } else {
