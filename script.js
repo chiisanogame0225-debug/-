@@ -1,6 +1,5 @@
 const songs = [];
 
-const songList = document.getElementById("songList");
 const addSongButton = document.getElementById("addSongButton");
 const sortAiueoButton = document.getElementById("sortAiueoButton");
 const addSongForm = document.getElementById("addSongForm");
@@ -8,13 +7,13 @@ const overlay = document.getElementById("overlay");
 const songForm = document.getElementById("songForm");
 const closeButton = document.getElementById("closeButton");
 
-// ポップアップ表示
+// ポップアップを開く
 addSongButton.addEventListener("click", () => {
   addSongForm.style.display = "block";
   overlay.style.display = "block";
 });
 
-// ポップアップ閉じる
+// ポップアップを閉じる
 function closePopup() {
   addSongForm.style.display = "none";
   overlay.style.display = "none";
@@ -23,7 +22,7 @@ function closePopup() {
 closeButton.addEventListener("click", closePopup);
 overlay.addEventListener("click", closePopup);
 
-// 曲追加
+// 曲を追加する
 songForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -41,23 +40,31 @@ songForm.addEventListener("submit", (e) => {
   closePopup();
 });
 
-// あいうえお順ソート（振り仮名使用）
+// あいうえお順に並び替える
 sortAiueoButton.addEventListener("click", () => {
   songs.sort((a, b) => a.furigana.localeCompare(b.furigana, "ja"));
   render();
 });
 
-// 曲リストを表示する関数
+// 2つのテーブルに分けて表示する
 function render() {
-  songList.innerHTML = "";
+  const list1 = document.getElementById("songList1");
+  const list2 = document.getElementById("songList2");
+  list1.innerHTML = "";
+  list2.innerHTML = "";
 
-  songs.forEach(song => {
+  songs.forEach((song, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${song.artist}</td>
       <td><a href="${song.url}" target="_blank">${song.title}</a></td>
       <td><a href="${song.url}" target="_blank">リンク</a></td>
     `;
-    songList.appendChild(tr);
+
+    if (index % 2 === 0) {
+      list1.appendChild(tr);
+    } else {
+      list2.appendChild(tr);
+    }
   });
 }
