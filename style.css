@@ -8,10 +8,22 @@ button {
   padding: 8px 16px;
 }
 
+.table-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.table-column {
+  width: 48%; /* 2列にするための幅調整 */
+  box-sizing: border-box;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 th, td {
@@ -19,7 +31,6 @@ th, td {
   padding: 8px;
 }
 
-/* ポップアップ */
 #addSongForm {
   display: none;
   position: fixed;
@@ -29,11 +40,10 @@ th, td {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  z-index: 1000;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
 }
 
-/* 背景 */
 .overlay {
   display: none;
   position: fixed;
