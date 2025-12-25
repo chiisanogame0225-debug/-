@@ -65,5 +65,17 @@ function render() {
 }
 
 sortBy.addEventListener("change", render);
+document.getElementById('addSongButton').addEventListener('click', function() {
+  document.getElementById('addSongForm').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+});
 
+document.getElementById('songForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  // ここに曲追加の処理を入れる（既にある処理）
+
+  // 追加後にポップアップとオーバーレイを非表示に
+  document.getElementById('addSongForm').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+});
 render();
