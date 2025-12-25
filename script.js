@@ -66,15 +66,15 @@ function render() {
       <td><a href="${song.url}" target="_blank">${song.title}</a></td>
     `;
 
-    // アーティスト名が同じ場合は同じテーブルに追加
     if (song.artist === lastArtist) {
+      // 同じアーティスト名の場合は同じテーブルに追加
       if (currentList === 1) {
         list1.appendChild(tr);
       } else {
         list2.appendChild(tr);
       }
     } else {
-      // アーティスト名が異なる場合は、テーブルを切り替える
+      // アーティスト名が異なる場合はテーブルを切り替える
       lastArtist = song.artist;
       currentList = (currentList === 1) ? 2 : 1;
       if (currentList === 1) {
