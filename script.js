@@ -65,7 +65,6 @@ function render() {
     // アーティスト名が変わった場合のみアーティスト名を表示
     if (song.artist !== lastArtist) {
       lastArtist = song.artist;
-      // アーティスト名のセルを追加
       const artistCell = document.createElement("td");
       artistCell.textContent = song.artist;
       tr.appendChild(artistCell);
