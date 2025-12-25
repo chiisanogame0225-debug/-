@@ -56,13 +56,13 @@ function render() {
   list1.innerHTML = "";
   list2.innerHTML = "";
 
-  lastArtist = '';
-  currentList = 1;
+  lastArtist = ''; // レンダリングのたびにリセット
+  currentList = 1; // 初期テーブルは list1
 
   songs.forEach((song) => {
     const tr = document.createElement("tr");
 
-    // アーティスト名が変わった場合に表示する
+    // アーティスト名の表示制御
     const artistName = (song.artist === lastArtist) ? '' : song.artist;
     lastArtist = song.artist;
 
