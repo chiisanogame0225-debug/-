@@ -54,3 +54,7 @@ th, td {
   background: rgba(0,0,0,0.5);
   z-index: 500;
 }
+/* 同じアーティスト名の続き行でアーティスト名の横線を消す */
+table tbody tr:not(:first-child) td:first-child {
+  border-top: none;
+}
