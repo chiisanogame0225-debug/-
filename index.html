@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>歌える曲リスト</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>歌える曲リスト</h1>
+
+  <div class="filter">
+    <select id="sortBy">
+      <option value="artist">アーティスト名で並び替え</option>
+      <option value="title">曲名で並び替え</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>曲名</th>
+        <th>アーティスト名</th>
+        <th>振り仮名</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody id="songList"></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
