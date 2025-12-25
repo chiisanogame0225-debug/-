@@ -8,21 +8,32 @@
 <body>
   <h1>歌える曲リスト</h1>
 
-  <div class="filter">
-    <select id="sortBy">
-      <option value="artist">アーティスト名で並び替え</option>
-      <option value="title">曲名で並び替え</option>
-    </select>
-  <!-- 追加ボタンをここに追加 -->
-    <button id="addSongButton">曲を追加</button>
+<div class="filter">
+  <select id="sortBy">
+    <option value="artist">アーティスト名で並び替え</option>
+    <option value="title">曲名で並び替え</option>
+  </select>
+  <button id="addSongButton">曲を追加</button>
+  
+  <!-- フォームをここに追加 -->
+  <div id="addSongForm" style="display: none;">
+    <h2>曲を追加</h2>
+    <form id="songForm">
+      <label>曲名: <input type="text" name="title" required></label><br>
+      <label>アーティスト名: <input type="text" name="artist" required></label><br>
+      <label>振り仮名: <input type="text" name="furigana" required></label><br>
+      <label>URL: <input type="text" name="url" required></label><br>
+      <button type="submit">追加</button>
+    </form>
   </div>
+</div>
 
   <table>
     <thead>
       <tr>
-        <th>曲名</th>
-        <th>アーティスト名</th>
         <th>振り仮名</th>
+        <th>アーティスト名</th>
+        <th>曲名</th>
         <th>URL</th>
       </tr>
     </thead>
