@@ -15,45 +15,46 @@
 <!-- オーバーレイ -->
 <div class="overlay" id="overlay"></div>
 
-<!-- ポップアップ -->
+<!-- ポップアップフォーム -->
 <div id="addSongForm">
   <h2>曲を追加</h2>
   <form id="songForm">
-    <label>
-      曲名：
-      <input type="text" name="title" required>
-    </label><br><br>
-
-    <label>
-      アーティスト名：
-      <input type="text" name="artist" required>
-    </label><br><br>
-
-    <label>
-      アーティスト振り仮名：
-      <input type="text" name="furigana" required>
-    </label><br><br>
-
-    <label>
-      URL：
-      <input type="url" name="url">
-    </label><br><br>
-
+    <label>曲名： <input type="text" name="title" required></label><br><br>
+    <label>アーティスト名： <input type="text" name="artist" required></label><br><br>
+    <label>アーティスト振り仮名： <input type="text" name="furigana" required></label><br><br>
+    <label>URL： <input type="url" name="url"></label><br><br>
     <button type="submit">追加</button>
     <button type="button" id="closeButton">キャンセル</button>
   </form>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>アーティスト名</th>
-      <th>曲名</th>
-      <th>URL</th>
-    </tr>
-  </thead>
-  <tbody id="songList"></tbody>
-</table>
+<!-- テーブルを2列で配置するコンテナ -->
+<div class="table-container">
+  <div class="table-column">
+    <table>
+      <thead>
+        <tr>
+          <th>アーティスト名</th>
+          <th>曲名</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody id="songList1"></tbody>
+    </table>
+  </div>
+  <div class="table-column">
+    <table>
+      <thead>
+        <tr>
+          <th>アーティスト名</th>
+          <th>曲名</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody id="songList2"></tbody>
+    </table>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
