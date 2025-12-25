@@ -8,6 +8,7 @@ const songForm = document.getElementById("songForm");
 const closeButton = document.getElementById("closeButton");
 
 let lastArtist = ''; // 最後に追加したアーティスト名
+let currentList = 1; // 現在のテーブル番号 (1 または 2)
 
 // ポップアップを開く
 addSongButton.addEventListener("click", () => {
@@ -56,25 +57,27 @@ function render() {
   list2.innerHTML = "";
 
   lastArtist = ''; // レンダリングのたびにリセット
+  currentList = 1; // 初期テーブルは list1
 
-  songs.forEach((song, index) => {
+  songs.forEach((song) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${song.artist}</td>
       <td><a href="${song.url}" target="_blank">${song.title}</a></td>
     `;
 
-    // 同じアーティスト名の場合は同じテーブルに追加
+    // アーティスト名が同じ場合は同じテーブルに追加
     if (song.artist === lastArtist) {
-      if (index % 2 === 0) {
+      if (currentList === 1) {
         list1.appendChild(tr);
       } else {
         list2.appendChild(tr);
       }
     } else {
-      // 新しいアーティスト名の場合はテーブルをリセット
+      // アーティスト名が異なる場合は、テーブルを切り替える
       lastArtist = song.artist;
-      if (index % 2 === 0) {
+      currentList = (currentList === 1) ? 2 : 1;
+      if (currentList === 1) {
         list1.appendChild(tr);
       } else {
         list2.appendChild(tr);
